@@ -6,10 +6,20 @@ if (localStorage.getItem('max_score') == null){
   localStorage.setItem('last_scores', JSON.stringify(last_scores));
 }
 
+var shows_now = 0;
+
 //show player max score
-setTimeout(function(){
-    $('#user_max_score').text(localStorage.getItem('max_score'));
-},1000);
+$(document).ready(function(){
+  show_result = setInterval(function(){
+    if (localStorage.getItem('max_score') == null){clearInterval(show_result);}
+    if (shows_now != localStorage.getItem('max_score')){
+      shows_now++;
+      $('#user_max_score').text(shows_now);
+    } else {
+      clearInterval(show_result);
+    }
+  },30);
+});
 
 
 //start game button
