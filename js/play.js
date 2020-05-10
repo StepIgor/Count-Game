@@ -153,7 +153,7 @@ function generate_task(){
   } else {
     //divide
     num1 = randomInteger(0,99);
-    num2 = randomInteger(0,99);
+    num2 = randomInteger(1,99);
 
     result = Math.floor(num1 / num2);
 
@@ -162,13 +162,13 @@ function generate_task(){
     while (fake_step != 3){
       what_to_do = randomInteger(0,1);
       if (what_to_do == 0){
-        new_el = result + randomInteger(-15,15);
+        new_el = result + randomInteger(-5,5);
         if (fake_answers.indexOf(new_el) == -1 && new_el != result){
           fake_answers[fake_step] = new_el;
           fake_step++;
         }
       } else {
-        new_el = (num1 + randomInteger(-3,3)) * num2;
+        new_el = Math.floor((num1 + randomInteger(num1,num1*5)) / num2);
         if (fake_answers.indexOf(new_el) == -1 && new_el != result){
           fake_answers[fake_step] = new_el;
           fake_step++;
