@@ -5,6 +5,8 @@ var game_timer = 100;
 var lost = false;
 var validated = false;
 
+var black_scr_tapped = false;
+
 //tasks
 var num1 = 0;
 var num2 = 0;
@@ -30,6 +32,10 @@ valid_answ_audio.preload = 'auto';
 valid_answ_audio.src = 'snd/valid.wav';
 
 document.getElementById('black_screen').addEventListener('click',function(){
+  if (black_scr_tapped == true){
+    return;
+  }
+  black_scr_tapped = true;
   $('#prepate_tip').text('Подготовьтесь...');
   $('#prepare_seconds').text(warmup_seconds);
   audio_prep.play();
