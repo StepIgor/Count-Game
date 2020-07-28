@@ -1,0 +1,17 @@
+{
+  "short_name": "Count Game",
+  "name": "Count Game: считать быстрее",
+  "description": "Простая игра на скорость вычисления",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.html",
+  "background_color": "#EEEEEE",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#FF6A00"
+}
