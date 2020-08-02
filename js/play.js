@@ -14,23 +14,6 @@ var result = 0;
 var action = 0;
 var valid_id = 0;
 
-//warmup seconds
-var audio_prep = new Audio();
-audio_prep.preload = 'auto';
-audio_prep.src = 'snd/prepare.wav';
-//you dont have time!
-var audio_time = new Audio();
-audio_time.preload = 'auto';
-audio_time.src = 'snd/time.wav';
-//game over
-var audio_over = new Audio();
-audio_over.preload = 'auto';
-audio_over.src = 'snd/over.wav';
-//valid answer
-var valid_answ_audio = new Audio();
-valid_answ_audio.preload = 'auto';
-valid_answ_audio.src = 'snd/valid.wav';
-
 document.getElementById('black_screen').addEventListener('click',function(){
   if (black_scr_tapped == true){
     return;
@@ -38,12 +21,12 @@ document.getElementById('black_screen').addEventListener('click',function(){
   black_scr_tapped = true;
   $('#prepate_tip').text('Подготовьтесь...');
   $('#prepare_seconds').text(warmup_seconds);
-  audio_prep.play();
+  document.getElementById('audio_prep').play();
   hide_scr = setInterval(function(){
     warmup_seconds -= 1;
     if (warmup_seconds != -1){
       $('#prepare_seconds').text(warmup_seconds);
-      audio_prep.play();
+      document.getElementById('audio_prep').play();
     }
     if (warmup_seconds == -1){
       document.getElementById('black_screen').style.display = 'none';
@@ -66,11 +49,11 @@ function start_game(){
       document.getElementById('timer_line').classList.remove('orange');
       document.getElementById('time_show').classList.remove('orange-text');
       document.getElementById('time_show').classList.add('red-text');
-      audio_time.play();
+      document.getElementById('audio_time').play();
     }
-    if (game_timer == 10 || game_timer == 5) audio_time.play();
+    if (game_timer == 10 || game_timer == 5) document.getElementById('audio_time').play();
     if (game_timer == 0){
-      audio_over.play();
+      document.getElementById('audio_over').play();
       lost = true;
       sessionStorage.setItem('last_result', score);
       setTimeout(function(){document.location.href = 'gameover.html'},2000);
@@ -203,13 +186,13 @@ function give_answer(id){
     score++;
     $('#score_show').text(score);
     document.getElementById('place_'+id.split('_')[1]).classList.add('green');
-    valid_answ_audio.play();
+    document.getElementById('valid_answ_audio').play();
     setTimeout(function(){generate_task(); document.getElementById('place_'+id.split('_')[1]).classList.remove('green'); validated = false;},750);
   } else {
     lost = true;
     sessionStorage.setItem('last_result', score);
     document.getElementById('place_'+id.split('_')[1]).classList.add('red');
-    audio_over.play();
+    document.getElementById('audio_over').play();
     setTimeout(function(){document.location.href = 'gameover.html'},2000);
     clearInterval(game_timer_int);
   }

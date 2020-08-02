@@ -41,10 +41,7 @@ $(document).ready(function(){
 
 document.getElementById('to_menu_but').addEventListener('click',function(){
   this.style.visibility = 'hidden';
-  var audio = new Audio();
-  audio.preload = 'auto';
-  audio.src = 'snd/stats_but.wav';
-  audio.play();
+  document.getElementById('go_to_menu_but_sound').play();
   setTimeout(function(){document.location.href = 'index.html'}, 2000);
 });
 

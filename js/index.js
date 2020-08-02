@@ -25,18 +25,12 @@ $(document).ready(function(){
 //start game button
 document.getElementById('start_game_but').addEventListener('click', function(){
   this.style.visibility = 'hidden';
-  var audio = new Audio();
-  audio.preload = 'auto';
-  audio.src = 'snd/play_but.wav';
-  audio.play();
+  document.getElementById('play_but_sound').play();
   setTimeout(function(){document.location.href = 'play.html'}, 2000);
 });
 
 document.getElementById('go_to_stats').addEventListener('click', function(){
   this.style.visibility = 'hidden';
-  var audio = new Audio();
-  audio.preload = 'auto';
-  audio.src = 'snd/stats_but.wav';
-  audio.play();
+  document.getElementById('stat_but_sound').play();
   setTimeout(function(){document.location.href = 'stats.html'}, 750);
 });
